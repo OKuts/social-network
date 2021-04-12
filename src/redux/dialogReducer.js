@@ -18,19 +18,19 @@ const initState = {
 }
 
 const dialogReducer = (state = initState, action) => {
-
+    const stateCopy = { ...{}, ...state };
     switch (action.type) {
         case ADD_MESSAGE:
             const newMessage = {
                 id: 10,
-                message: state.areaValue
+                message: stateCopy.areaValue
             }
-            state.messages.push(newMessage);
-            state.areaValue = '';
-            return state;
+            stateCopy.messages.push(newMessage);
+            stateCopy.areaValue = '';
+            return stateCopy;
         case CHANGE_AREA_MESSAGE:
-            state.areaValue = action.text;
-            return state;
+            stateCopy.areaValue = action.text;
+            return stateCopy;
         default: return state;
     }
 }

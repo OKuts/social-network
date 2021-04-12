@@ -8,19 +8,19 @@ import ProfileCont from './components/Main/Profile/ProfileCont';
 
 import './App.css';
 
-function App(props) {
+function App() {
   return (
     <BrowserRouter>
       <div className="app__wrapper">
         <Header />
         <Nav />
         <div className="content">
-          <Route path='/profile'
-            render={() => <ProfileCont store={props.store} />}
-          />
-          <Route path='/dialogs'
-            render={() => <DialogsCont store={props.store} />}
-          />
+          <Route path='/profile'>
+            <ProfileCont />
+          </Route>
+          <Route path='/dialogs'>
+            <DialogsCont />
+          </Route>
         </div>
       </div>
     </BrowserRouter>

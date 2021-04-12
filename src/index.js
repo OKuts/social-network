@@ -3,16 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import store from './redux/redux_store';
+import { Provider } from 'react-redux';
 
 const rerenderTree = () => {
   ReactDOM.render(
-    <React.StrictMode>
-      <App store={store} />
-    </React.StrictMode>,
+    <Provider store={store}>
+      <App />
+    </Provider>,
     document.getElementById('root')
   );
 }
 
-rerenderTree(store.getState());
+rerenderTree();
 
 store.subscribe(() => rerenderTree(store.getState()));
