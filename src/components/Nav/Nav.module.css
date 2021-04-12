@@ -1,0 +1,22 @@
+.app__nav {
+    grid-area: n;
+    background: rgb(155, 194, 185);
+  }
+
+.item a {
+  color:white;
+  display: inline-block;
+  width: 100%;
+}
+
+.item a.active {
+  color: gold;
+}
+
+.item:hover {
+  background: rgb(101, 170, 155);;
+}
+
+.item {
+  padding: 5px;
+}

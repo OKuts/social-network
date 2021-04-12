@@ -1,0 +1,9 @@
+.page_name {
+    text-align: center;
+}
+
+.page {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+

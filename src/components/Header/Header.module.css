@@ -1,0 +1,8 @@
+.app__header img{
+  height: 60%;
+}
+
+.app__header {
+  grid-area: h;
+  background: rgb(101, 170, 155);
+}

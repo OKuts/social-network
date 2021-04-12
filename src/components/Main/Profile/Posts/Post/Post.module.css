@@ -1,0 +1,7 @@
+.post {
+  display: flex;
+}
+
+.post img{
+  width: 50px;
+}
