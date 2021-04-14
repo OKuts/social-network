@@ -5,8 +5,7 @@ import Message from './Message/Message';
 
 
 function Dialogs(props) {
-    const dialogs = props.dialogPage.dialogs;
-    const messages = props.dialogPage.messages;
+    const { dialogs, messages, areaValue } = props.dialogPage;
     const textArea = React.createRef();
 
     const dialogElements = dialogs.map(i =>
@@ -27,7 +26,9 @@ function Dialogs(props) {
                     {messageElements}
                     <textarea
                         onChange={() => props.onChangeArea(textArea.current.value)}
-                        ref={textArea} />
+                        ref={textArea}
+                        value={areaValue}
+                    />
                     <button onClick={() => props.sendMessage()}>Send</button>
                 </div>
 

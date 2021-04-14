@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-  .app__wrapper {
+.app__wrapper {
   max-width: 980px;
   min-height: 97vh ;
   display: grid;

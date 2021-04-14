@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import Nav from './components/Nav/Nav';
 import DialogsCont from './components/Main/Dialogs/DialogsCont';
 import ProfileCont from './components/Main/Profile/ProfileCont';
+import UsersCont from './components/Main/Users/UsersCont';
 
 
 import './App.css';
@@ -20,6 +21,9 @@ function App() {
           </Route>
           <Route path='/dialogs'>
             <DialogsCont />
+          </Route>
+          <Route path='/users'>
+            <UsersCont />
           </Route>
         </div>
       </div>

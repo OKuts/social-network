@@ -18,6 +18,12 @@ function Nav() {
                     to="/dialogs">Dialogs
                 </NavLink>
             </div>
+            <div className={st.item}>
+                <NavLink
+                    activeClassName={st.active}
+                    to="/users">Users
+                </NavLink>
+            </div>
         </nav>
     );
 }

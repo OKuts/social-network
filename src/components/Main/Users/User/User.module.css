@@ -1,0 +1,22 @@
+.img {
+    width: 35px;
+}
+
+.selectedPage {
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.page {
+    display: inline-block;
+    padding: 3px;
+
+}
+
+.page:hover {
+    cursor: pointer;
+}
+
+.select {
+    text-align: center;
+}
