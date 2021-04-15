@@ -38,10 +38,10 @@ const usersReducer = (state = initState, action) => {
 }
 
 
-export const followAC = (id) => ({ type: FOLLOW, id });
-export const setUsersAC = (users) => ({ type: SET_USERS, users });
-export const changePageAC = (newPage) => ({ type: CHANGE_PAGE, newPage });
-export const setTotalCountAC = (totalCount) => ({ type: SET_TOTAL_COUNT, totalCount });
+export const changeFollow = (id) => ({ type: FOLLOW, id });
+export const setUsers = (users) => ({ type: SET_USERS, users });
+export const changePage = (newPage) => ({ type: CHANGE_PAGE, newPage });
+export const setTotalCount = (totalCount) => ({ type: SET_TOTAL_COUNT, totalCount });
 export const changeRotation = (isRotation) => ({ type: CHANGE_ROTATION, isRotation });
 
 export default usersReducer;
