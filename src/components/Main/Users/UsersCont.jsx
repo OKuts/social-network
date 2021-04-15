@@ -3,7 +3,8 @@ import {
     followAC,
     setUsersAC,
     changePageAC,
-    setTotalCountAC
+    setTotalCountAC,
+    changeRotation
 } from '../../../redux/usersReducer';
 import { connect } from 'react-redux';
 
@@ -13,7 +14,8 @@ const mapDispatchToProps = (dispatch) => {
         changeFollow: (id) => dispatch(followAC(id)),
         setUsers: (users) => dispatch(setUsersAC(users)),
         changePage: (newPage) => dispatch(changePageAC(newPage)),
-        setTotalCount: (totalCount) => dispatch(setTotalCountAC(totalCount))
+        setTotalCount: (totalCount) => dispatch(setTotalCountAC(totalCount)),
+        changeRotation: (isRotation) => dispatch(changeRotation(isRotation)),
     }
 }
 const UsersCont = connect(mapStateToProps, mapDispatchToProps)(UsersAPICont)

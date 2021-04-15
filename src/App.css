@@ -19,6 +19,7 @@
 .content {
   grid-area: c;
   background: rgb(219, 230, 227);
+  position: relative;
 }
 
 a {

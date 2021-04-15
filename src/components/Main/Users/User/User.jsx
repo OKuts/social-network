@@ -6,7 +6,7 @@ const User = (props) => {
     const { users, currentPage, pageSize, totalCount } = props.usersPage;
     const pages = Array(Math.ceil(totalCount / pageSize)).fill(0);
 
-    console.log(props);
+    // console.log(props);
 
     return (
         <>

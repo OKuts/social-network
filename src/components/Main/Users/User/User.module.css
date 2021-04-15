@@ -20,3 +20,10 @@
 .select {
     text-align: center;
 }
+
+.spinner {
+    width: 200px;
+    position: absolute;
+    top: calc(50vh - 100px);
+    left: calc(50% - 100px);
+}
