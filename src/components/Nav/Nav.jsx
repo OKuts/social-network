@@ -8,8 +8,9 @@ function Nav() {
         <nav className={st.app__nav}>
             <div className={st.item}>
                 <NavLink
+                    exact
                     activeClassName={st.active}
-                    to="/profile">Profile
+                    to="/profile/">Profile
                 </NavLink>
             </div>
             <div className={st.item}>

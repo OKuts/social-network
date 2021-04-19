@@ -1,5 +1,6 @@
-const ADD_POST = "ADD_POST";
-const CHANGE_AREA_POST = "CHANGE_AREA_POST";
+const ADD_POST = 'ADD_POST';
+const CHANGE_AREA_POST = 'CHANGE_AREA_POST';
+const SET_ONE_USER = 'SET_ONE_USER';
 
 const initState = {
     posts: [
@@ -8,6 +9,7 @@ const initState = {
         { id: 2, post: 'I eat meat' },
         { id: 3, post: 'Try again' },
     ],
+    currentUser: null,
     areaValue: ''
 }
 
@@ -22,12 +24,17 @@ const profileReducer = (state = initState, action) => {
         case CHANGE_AREA_POST:
             stateCopy.areaValue = action.text;
             return stateCopy;
+        case SET_ONE_USER:
+            stateCopy.currentUser = action.currentUser;
+            return stateCopy;
         default: return state;
     }
 }
 
 
-export const addPostActionCreator = () => ({ type: ADD_POST });
-export const inputPostActionCreator = (text) => ({ type: CHANGE_AREA_POST, text });
+export const addPost = () => ({ type: ADD_POST });
+export const inputPost = (text) => ({ type: CHANGE_AREA_POST, text });
+export const setUserProfile = (currentUser) => ({ type: SET_ONE_USER, currentUser });
+
 
 export default profileReducer;

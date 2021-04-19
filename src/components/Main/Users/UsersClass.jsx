@@ -13,11 +13,6 @@ class UsersClass extends React.Component {
     render() {
         return (
             <>
-                <span>1</span>
-                <span className={st.selectedPage}>2</span>
-                <span>3</span>
-                <span>4</span>
-                <span>5</span>
                 { this.props.usersPage.users.map(i => {
                     const { id, name, followed, status, location, photos } = i;
                     return (

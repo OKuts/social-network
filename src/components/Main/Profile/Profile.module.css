@@ -7,3 +7,7 @@ textarea {
   max-width: 100%;
   box-sizing: border-box;
 }
+
+.img_icon {
+  width: 50px;
+}

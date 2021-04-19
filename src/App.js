@@ -16,7 +16,7 @@ function App() {
         <Header />
         <Nav />
         <div className="content">
-          <Route path='/profile'>
+          <Route path='/profile/:userId'>
             <ProfileCont />
           </Route>
           <Route path='/dialogs'>

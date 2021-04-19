@@ -1,37 +1,16 @@
-import Profile from './Profile';
+import ProfileAPICont from './ProfileAPICont';
 import { connect } from 'react-redux';
 import {
-    addPostActionCreator,
-    inputPostActionCreator
+    addPost,
+    inputPost,
+    setUserProfile
 } from '../../../redux/profileReducer';
+import { withRouter } from 'react-router';
 
-const mapStateToProps = (state) => ({profilePage: state.profilePage})
+const mapStateToProps = (state) => ({ profilePage: state.profilePage })
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addPost: () => dispatch(addPostActionCreator()),
-        onChangeTextArea: (text) => dispatch(inputPostActionCreator(text))
-    }
-}
-const ProfileCont = connect(mapStateToProps, mapDispatchToProps)(Profile)
+const ProfileAPIContWithURL =  withRouter(ProfileAPICont);
+
+const ProfileCont = connect(mapStateToProps, { addPost, inputPost, setUserProfile })(ProfileAPIContWithURL)
 
 export default ProfileCont;
-
-// const ProfileCont = (props) => {
-
-//     const profilePage = props.store.getState().profilePage;
-
-//     const addPost = () => props.store.dispatch(addPostActionCreator());
-//     const onChangeTextArea = (text) =>
-//         props.store.dispatch(inputPostActionCreator(text));
-
-//     return (
-//         <>
-//             <Profile
-//                 onChangeTextArea={onChangeTextArea}
-//                 addPost={addPost}
-//                 profilePage={profilePage}
-//             />
-//         </>
-//     )
-// }
