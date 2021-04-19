@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route } from "react-router-dom";
-import Header from './components/Header/Header';
+import HeaderCont from './components/Header/HeaderCont';
 import Nav from './components/Nav/Nav';
 import DialogsCont from './components/Main/Dialogs/DialogsCont';
 import ProfileCont from './components/Main/Profile/ProfileCont';
@@ -13,7 +13,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="app__wrapper">
-        <Header />
+        <HeaderCont />
         <Nav />
         <div className="content">
           <Route path='/profile/:userId'>

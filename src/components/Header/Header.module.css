@@ -5,4 +5,15 @@
 .app__header {
   grid-area: h;
   background: rgb(101, 170, 155);
+  position: relative;
+}
+
+.login_block {
+  right: 15px;
+  top: 15px;
+  position: absolute;
+}
+
+.login_block a {
+  color: white;
 }

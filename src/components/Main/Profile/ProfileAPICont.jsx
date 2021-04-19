@@ -1,7 +1,6 @@
 import * as axios from 'axios';
 import React, { useEffect } from 'react';
 import Profile from './Profile';
-import { setUserProfile } from '../../../redux/profileReducer';
 
 const ProfileAPICont = (props) => {
     const param = props.match.params.userId;
