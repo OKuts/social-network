@@ -1,6 +1,7 @@
 import UsersAPICont from './UsersAPICont';
 import {
-    changeFollow,
+    onFollow,
+    offFollow,
     setUsers,
     changePage,
     setTotalCount,
@@ -11,7 +12,8 @@ import { connect } from 'react-redux';
 const mapStateToProps = (state) => ({ usersPage: state.usersPage });
 
 const UsersCont = connect(mapStateToProps, {
-    changeFollow,
+    onFollow,
+    offFollow,
     setUsers,
     changePage,
     setTotalCount,

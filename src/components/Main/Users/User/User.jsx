@@ -1,6 +1,7 @@
 import st from './User.module.css';
 import userPhoto from '../../../../assets/img/logo.png';
 import { NavLink } from 'react-router-dom';
+import * as axios from 'axios';
 
 const User = (props) => {
 
@@ -27,12 +28,39 @@ const User = (props) => {
                         <img className={st.img}
                             src={photos.small ? photos.small : userPhoto} alt="logo" />
                     </NavLink >
-                    <button
-                        onClick={() => props.changeFollow(id)}
-                        id={id}
-                        key={id}>
-                        {followed ? 'Yes' : 'No'}
-                    </button>
+                    {followed
+                        ? <button
+                            onClick={() => {
+                                let path = `https://social-network.samuraijs.com/api/1.0/follow/${id}`;
+                                axios.delete(path, {
+                                    withCredentials: true,
+                                    headers: { 'API-KEY': 'd4633feb-0512-4c9d-a3fb-0aeeb64a7faf' }
+                                }).then(res => {
+                                    if (res.data.resultCode == 0) {
+                                        props.offFollow(id);
+                                    }
+                                });
+                            }}
+                            key={id}>
+                            To unfollow
+                        </button>
+                        : <button
+                            onClick={() => {
+                                let path = `https://social-network.samuraijs.com/api/1.0/follow/${id}`;
+                                axios.post(path, {}, {
+                                    withCredentials: true,
+                                    headers: { 'API-KEY': 'd4633feb-0512-4c9d-a3fb-0aeeb64a7faf' }
+                                }).then(res => {
+                                    if (res.data.resultCode == 0) {
+                                        props.onFollow(id);
+                                    }
+                                });
+                            }}
+                            key={id}>
+                            To follow
+                        </button>
+                    }
+
                     <div>{name}</div>
                     <div>{status}</div>
                     {/* <div>{'location.city'}</div>

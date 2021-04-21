@@ -1,4 +1,5 @@
 const FOLLOW = 'FOLLOW';
+const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 const CHANGE_PAGE = 'CHANGE_PAGE';
 const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
@@ -13,14 +14,16 @@ const initState = {
 }
 
 const usersReducer = (state = initState, action) => {
-
+    const stateCopy = { ...{}, ...state };
     switch (action.type) {
         case FOLLOW:
-            const stateCopy = { ...{}, ...state };
             stateCopy.users = state.users.map(item =>
-                action.id === item.id ? { ...item, followed: !item.followed } : item);
+                action.id === item.id ? { ...item, followed: true } : item);
             return stateCopy;
-
+        case UNFOLLOW:
+            stateCopy.users = state.users.map(item =>
+                action.id === item.id ? { ...item, followed: false } : item);
+            return stateCopy;
         case SET_USERS:
             return { ...state, users: [...action.users] };
 
@@ -38,7 +41,8 @@ const usersReducer = (state = initState, action) => {
 }
 
 
-export const changeFollow = (id) => ({ type: FOLLOW, id });
+export const onFollow = (id) => ({ type: FOLLOW, id });
+export const offFollow = (id) => ({ type: UNFOLLOW, id });
 export const setUsers = (users) => ({ type: SET_USERS, users });
 export const changePage = (newPage) => ({ type: CHANGE_PAGE, newPage });
 export const setTotalCount = (totalCount) => ({ type: SET_TOTAL_COUNT, totalCount });

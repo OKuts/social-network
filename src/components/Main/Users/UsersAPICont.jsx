@@ -1,21 +1,20 @@
-import * as axios from 'axios';
 import React, { useEffect } from 'react';
 import User from './User/User';
 import Preloader from './Preloader/Preloader';
+import { usersAPI } from '../../../api/api';
 
 const UsersAPICont = (props) => {
 
     const { currentPage, pageSize, isRotation } = props.usersPage;
     const getServer = (n) => {
         props.changeRotation(true);
-        let path = `https://social-network.samuraijs.com/api/1.0/users`;
-        path += `?page=${n || currentPage}`;
-        path += `&count=${pageSize}`;
-        axios.get(path).then(res => {
-            props.setUsers(res.data.items);
-            if (!n) props.setTotalCount(res.data.totalCount);
-            props.changeRotation(false);
-        });
+        const path = `users?page=${n || currentPage}&count=${pageSize}`;
+        usersAPI.getUsers(path)
+            .then(res => {
+                props.setUsers(res.items);
+                if (!n) props.setTotalCount(res.totalCount);
+                props.changeRotation(false);
+            });
     }
 
     useEffect(() => {
@@ -28,11 +27,13 @@ const UsersAPICont = (props) => {
     }
     return (
         <>
-            <Preloader isRotation={isRotation}/>
+            <Preloader isRotation={isRotation} />
             <User
                 usersPage={props.usersPage}
                 onChangePage={onChangePage}
-                changeFollow={props.changeFollow} />
+                onFollow={props.onFollow}
+                offFollow={props.offFollow}
+            />
         </>
     )
 }
