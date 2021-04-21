@@ -5,7 +5,8 @@ import {
     setUsers,
     changePage,
     setTotalCount,
-    changeRotation
+    changeRotation,
+    toggleBtnActive
 } from '../../../redux/usersReducer';
 import { connect } from 'react-redux';
 
@@ -18,6 +19,7 @@ const UsersCont = connect(mapStateToProps, {
     changePage,
     setTotalCount,
     changeRotation,
+    toggleBtnActive
 })(UsersAPICont)
 
 export default UsersCont;

@@ -5,18 +5,16 @@ import { connect } from 'react-redux';
 import {
     authUser
 } from '../../redux/authReducer';
+import { usersAPI } from '../../api/api';
 
 function HeaderCont(props) {
     // Kuts -  violet
     useEffect(() => {
-        let path = `https://social-network.samuraijs.com/api/1.0/auth/me`;
-        axios.get(path, {
-            withCredentials: true
-        })
+        usersAPI.usersServerData('auth/me', 'get')
             .then(
                 res => {
-                    if (res.data.resultCode === 0) {
-                        const { id, login, email } = res.data.data;
+                    if (res.resultCode === 0) {
+                        const { id, login, email } = res.data;
                         props.authUser(id, login, email);
                     }
 
@@ -24,7 +22,7 @@ function HeaderCont(props) {
     }, [])
     return (
         <>
-            <Header {...props}/>
+            <Header {...props} />
         </>
     );
 }

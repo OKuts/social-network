@@ -8,12 +8,14 @@ const UsersAPICont = (props) => {
     const { currentPage, pageSize, isRotation } = props.usersPage;
     const getServer = (n) => {
         props.changeRotation(true);
+        props.toggleBtnActive();
         const path = `users?page=${n || currentPage}&count=${pageSize}`;
-        usersAPI.getUsers(path)
+        usersAPI.usersServerData(path, 'get')
             .then(res => {
                 props.setUsers(res.items);
                 if (!n) props.setTotalCount(res.totalCount);
                 props.changeRotation(false);
+                props.toggleBtnActive();
             });
     }
 
@@ -33,6 +35,7 @@ const UsersAPICont = (props) => {
                 onChangePage={onChangePage}
                 onFollow={props.onFollow}
                 offFollow={props.offFollow}
+                toggleBtnActive={props.toggleBtnActive}
             />
         </>
     )

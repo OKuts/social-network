@@ -6,9 +6,9 @@ import { usersAPI } from '../../../api/api';
 const ProfileAPICont = (props) => {
     const userId = props.match.params.userId;
     useEffect(() => {
-        usersAPI.getUsers('profile/' + userId)
-            .then(res => {
-                props.setUserProfile(res);
+        usersAPI.usersServerData('profile/' + userId, 'get')
+            .then(data => {
+                props.setUserProfile(data);
             })
     }, [])
 

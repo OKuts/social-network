@@ -3,14 +3,16 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 const CHANGE_PAGE = 'CHANGE_PAGE';
 const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
-const CHANGE_ROTATION = 'CHANGE_ROTATION'
+const CHANGE_ROTATION = 'CHANGE_ROTATION';
+const TOGGLE_BTN_ACTIVE = 'TOGGLE_BTN_ACTIVE';
 
 const initState = {
     users: [],
     pageSize: 8,
     totalCount: 100,
     currentPage: 1,
-    isRotation: false
+    isRotation: false,
+    isBtnActive: []
 }
 
 const usersReducer = (state = initState, action) => {
@@ -36,6 +38,14 @@ const usersReducer = (state = initState, action) => {
         case CHANGE_ROTATION:
             return { ...state, isRotation: action.isRotation };
 
+        case TOGGLE_BTN_ACTIVE:
+            return {
+                ...state,
+                isBtnActive : state.isBtnActive.includes(action.id)
+                ? state.isBtnActive.filter((el) => el !== action.id)
+                : [...state.isBtnActive, action.id]
+            };
+
         default: return state;
     }
 }
@@ -47,5 +57,6 @@ export const setUsers = (users) => ({ type: SET_USERS, users });
 export const changePage = (newPage) => ({ type: CHANGE_PAGE, newPage });
 export const setTotalCount = (totalCount) => ({ type: SET_TOTAL_COUNT, totalCount });
 export const changeRotation = (isRotation) => ({ type: CHANGE_ROTATION, isRotation });
+export const toggleBtnActive = (id) => ({ type: TOGGLE_BTN_ACTIVE, id });
 
 export default usersReducer;
