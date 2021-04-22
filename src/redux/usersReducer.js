@@ -1,3 +1,5 @@
+import { usersAPI } from '../api/api';
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
@@ -41,9 +43,9 @@ const usersReducer = (state = initState, action) => {
         case TOGGLE_BTN_ACTIVE:
             return {
                 ...state,
-                isBtnActive : state.isBtnActive.includes(action.id)
-                ? state.isBtnActive.filter((el) => el !== action.id)
-                : [...state.isBtnActive, action.id]
+                isBtnActive: state.isBtnActive.includes(action.id)
+                    ? state.isBtnActive.filter((el) => el !== action.id)
+                    : [...state.isBtnActive, action.id]
             };
 
         default: return state;
@@ -58,5 +60,34 @@ export const changePage = (newPage) => ({ type: CHANGE_PAGE, newPage });
 export const setTotalCount = (totalCount) => ({ type: SET_TOTAL_COUNT, totalCount });
 export const changeRotation = (isRotation) => ({ type: CHANGE_ROTATION, isRotation });
 export const toggleBtnActive = (id) => ({ type: TOGGLE_BTN_ACTIVE, id });
+
+export const getUsersData = (currentPage, pageSize, n) => {
+    return (dispatch) => {
+        dispatch(changeRotation(true));
+        dispatch(toggleBtnActive());
+        const path = `users?page=${n || currentPage}&count=${pageSize}`;
+        usersAPI.usersServerData(path, 'get')
+            .then(res => {
+                dispatch(setUsers(res.items));
+                if (!n) setTotalCount(res.totalCount);
+                dispatch(changeRotation(false));
+                dispatch(toggleBtnActive());
+            });
+
+    }
+}
+
+export const setFollow = (id, method) => {
+    return (dispatch) => {
+        dispatch(toggleBtnActive(id));
+        usersAPI.usersServerData('follow/' + id, method)
+            .then(res => {
+                if (res.resultCode == 0) {
+                    method === 'post' ? dispatch(onFollow(id)): dispatch(offFollow(id));
+                    dispatch(toggleBtnActive(id));
+                }
+            });
+    }
+}
 
 export default usersReducer;

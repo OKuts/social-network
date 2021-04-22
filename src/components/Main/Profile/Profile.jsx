@@ -8,7 +8,6 @@ import userPhoto from '../../../assets/img/logo.png';
 const textArea = React.createRef();
 
 const Profile = (props) => {
-    console.log(props);
     if (!props.profilePage.currentUser) {
         return <Preloader />
     }

@@ -1,8 +1,6 @@
 import st from './User.module.css';
 import userPhoto from '../../../../assets/img/logo.png';
 import { NavLink } from 'react-router-dom';
-import * as axios from 'axios';
-import { usersAPI } from '../../../../api/api';
 const User = (props) => {
 
     const { users, currentPage, pageSize, totalCount, isBtnActive } = props.usersPage;
@@ -27,31 +25,13 @@ const User = (props) => {
                             src={photos.small ? photos.small : userPhoto} alt="logo" />
                     </NavLink >
                     {followed
-                        ? <button disabled={isBtnActive.some(i => i === id) }
-                            onClick={() => {
-                                props.toggleBtnActive(id);
-                                usersAPI.usersServerData('follow/' + id, 'delete')
-                                    .then(res => {
-                                        if (res.resultCode == 0) {
-                                            props.offFollow(id);
-                                            props.toggleBtnActive(id);
-                                        }
-                                    });
-                            }}
+                        ? <button disabled={isBtnActive.some(i => i === id)}
+                            onClick={() => props.setFollow(id, 'delete')}
                             key={id}>
                             To unfollow
                         </button>
                         : <button disabled={isBtnActive.some(i => i === id)}
-                            onClick={() => {
-                                props.toggleBtnActive(id);
-                                usersAPI.usersServerData('follow/' + id,'post')
-                                    .then(res => {
-                                        if (res.resultCode == 0) {
-                                            props.onFollow(id);
-                                            props.toggleBtnActive(id);
-                                        }
-                                    });
-                            }}
+                            onClick={() => props.setFollow(id, 'post')}
                             key={id}>
                             To follow
                         </button>

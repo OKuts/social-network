@@ -1,3 +1,5 @@
+import {usersAPI} from '../api/api';
+
 const ADD_POST = 'ADD_POST';
 const CHANGE_AREA_POST = 'CHANGE_AREA_POST';
 const SET_ONE_USER = 'SET_ONE_USER';
@@ -36,5 +38,14 @@ export const addPost = () => ({ type: ADD_POST });
 export const inputPost = (text) => ({ type: CHANGE_AREA_POST, text });
 export const setUserProfile = (currentUser) => ({ type: SET_ONE_USER, currentUser });
 
+
+export const getOneUser = (id) => {
+    return (dispatch) => {
+        usersAPI.usersServerData('profile/' + id, 'get')
+            .then(data => {
+                dispatch(setUserProfile(data));
+            })
+    }
+}
 
 export default profileReducer;
