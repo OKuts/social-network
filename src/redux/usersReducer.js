@@ -68,12 +68,12 @@ export const getUsersData = (currentPage, pageSize, n) => {
         const path = `users?page=${n || currentPage}&count=${pageSize}`;
         usersAPI.usersServerData(path, 'get')
             .then(res => {
+                console.log(res, n);
                 dispatch(setUsers(res.items));
-                if (!n) setTotalCount(res.totalCount);
+                if (!n) dispatch(setTotalCount(res.totalCount));
                 dispatch(changeRotation(false));
                 dispatch(toggleBtnActive());
             });
-
     }
 }
 
