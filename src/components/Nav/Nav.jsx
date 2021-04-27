@@ -10,7 +10,7 @@ function Nav() {
                 <NavLink
                     exact
                     activeClassName={st.active}
-                    to="/profile/">Profile
+                    to="/profile">Profile
                 </NavLink>
             </div>
             <div className={st.item}>

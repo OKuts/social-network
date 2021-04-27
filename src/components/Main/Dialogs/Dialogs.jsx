@@ -5,6 +5,8 @@ import Message from './Message/Message';
 
 
 function Dialogs(props) {
+    // if (!props.isAuth) return <Redirect to={'/login'} />;
+
     const { dialogs, messages, areaValue } = props.dialogPage;
     const textArea = React.createRef();
 
