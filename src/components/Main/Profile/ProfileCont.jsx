@@ -1,30 +1,34 @@
 import ProfileAPICont from './ProfileAPICont';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import {
     addPost,
     inputPost,
     getOneUser
 } from '../../../redux/profileReducer';
 import { withRouter } from 'react-router';
+import {withAuthRedirect} from '../../../hoc/withAuthRedirect';
 
 const ProfileAPIContWithURL =  withRouter(ProfileAPICont);
 
 const mapStateToProps = (state) => {
    return {
     profilePage: state.profilePage,
-    isAuth: state.authPage.isUser
    }
 }
 
-const ProfileContWithAuth = (props)=>{
-    return !props.isAuth ? <Redirect to={'/login'} /> : <ProfileAPIContWithURL {...props} />
-}
+const mapStateToPropsForRedirect = (state) => {
+    return {
+     isAuth: state.authPage.isUser
+    }
+ }
+
+const RedirectContWithAuth = withAuthRedirect(ProfileAPIContWithURL);
+const RedirectContWithAuthConnect = connect(mapStateToPropsForRedirect)(RedirectContWithAuth);
 
 const ProfileCont = connect(mapStateToProps, {
     addPost,
     inputPost,
     getOneUser
-})(ProfileContWithAuth)
+})( RedirectContWithAuthConnect)
 
 export default ProfileCont;

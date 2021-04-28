@@ -68,7 +68,6 @@ export const getUsersData = (currentPage, pageSize, n) => {
         const path = `users?page=${n || currentPage}&count=${pageSize}`;
         usersAPI.usersServerData(path, 'get')
             .then(res => {
-                console.log(res, n);
                 dispatch(setUsers(res.items));
                 if (!n) dispatch(setTotalCount(res.totalCount));
                 dispatch(changeRotation(false));
@@ -82,7 +81,7 @@ export const setFollow = (id, method) => {
         dispatch(toggleBtnActive(id));
         usersAPI.usersServerData('follow/' + id, method)
             .then(res => {
-                if (res.resultCode == 0) {
+                if (res.resultCode === 0) {
                     method === 'post' ? dispatch(onFollow(id)): dispatch(offFollow(id));
                     dispatch(toggleBtnActive(id));
                 }

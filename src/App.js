@@ -17,10 +17,10 @@ function App() {
         <HeaderCont />
         <Nav />
         <div className="content">
-          <Route path='/profile/:userId'>
+          <Route exact path='/profile/:userId'>
             <ProfileCont />
           </Route>
-          <Route path='/profile'>
+          <Route exact path='/profile'>
             <ProfileCont />
           </Route>
           <Route path='/dialogs'>
