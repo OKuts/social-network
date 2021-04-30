@@ -14,7 +14,8 @@ const initState = {
     totalCount: 100,
     currentPage: 1,
     isRotation: false,
-    isBtnActive: []
+    isBtnActive: [],
+    userStatus: null
 }
 
 const usersReducer = (state = initState, action) => {

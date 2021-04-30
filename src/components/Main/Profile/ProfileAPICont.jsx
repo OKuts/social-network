@@ -2,10 +2,12 @@ import React, { useEffect } from 'react';
 import Profile from './Profile';
 
 const ProfileAPICont = (props) => {
-
     const userId = props.match.params.userId;
 
-    useEffect(() => props.getOneUser(userId), [])
+    useEffect(() => {
+        props.getOneUser(userId);
+        props.getUserStatus(userId);
+    }, [])
 
     return (
         <>

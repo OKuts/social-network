@@ -4,10 +4,12 @@ import { compose } from 'redux';
 import {
     addPost,
     inputPost,
-    getOneUser
+    getOneUser,
+    getUserStatus,
+    updateUserStatus
 } from '../../../redux/profileReducer';
 import { withRouter } from 'react-router';
-import { WithRedirect } from '../../../hoc/withAuthRedirect';
+import { withRedirect } from '../../../hoc/withAuthRedirect';
 
 const ProfileAPIContWithURL = withRouter(ProfileAPICont);
 
@@ -17,17 +19,11 @@ const mapStateToProps = (state) => {
     }
 }
 
-// const RedirectContWithAuth = WithRedirect(ProfileAPIContWithURL);
-
-// const ProfileCont = connect(mapStateToProps, {
-//     addPost,
-//     inputPost,
-//     getOneUser
-// })(RedirectContWithAuth)
-
-// export default ProfileCont;
-
 export default compose(
-    connect(mapStateToProps, { addPost, inputPost, getOneUser }),
-    WithRedirect
+    connect(mapStateToProps,
+        {
+            addPost, inputPost, getOneUser,
+            getUserStatus, updateUserStatus
+        }),
+    withRedirect
 )(ProfileAPIContWithURL);

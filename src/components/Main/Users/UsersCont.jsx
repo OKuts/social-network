@@ -1,4 +1,6 @@
+import { compose } from 'redux';
 import UsersAPICont from './UsersAPICont';
+import { withRedirect } from '../../../hoc/withAuthRedirect';
 import {
     changePage,
     getUsersData,
@@ -8,10 +10,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => ({ usersPage: state.usersPage });
 
-const UsersCont = connect(mapStateToProps, {
-    changePage,
-    getUsersData,
-    setFollow,
-})(UsersAPICont)
-
-export default UsersCont;
+export default compose(
+    connect(mapStateToProps, { changePage, getUsersData, setFollow }),
+    withRedirect
+)(UsersAPICont);

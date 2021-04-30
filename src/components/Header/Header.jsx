@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom';
 
 
 function Header(props) {
-  console.log(props);
   return (
     <header className={st.app__header}>
       <img src={kuts} alt="Ol Kuts" />
