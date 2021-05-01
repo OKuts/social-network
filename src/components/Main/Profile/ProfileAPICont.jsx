@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import Profile from './Profile';
 
 const ProfileAPICont = (props) => {
-    const userId = props.match.params.userId;
+    let userId = props.match.params.userId;
+    // userId = userId && 16594;
 
     useEffect(() => {
         props.getOneUser(userId);

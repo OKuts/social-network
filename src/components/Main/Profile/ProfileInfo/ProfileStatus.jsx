@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
 // import st from '../Profile.module.css';
 
@@ -13,6 +14,8 @@ const ProfileStatus = (props) => {
         props.updateUserStatus(status);
     }
 
+    useEffect(()=>{setStatus(props.status)}, [props.status])
+
     return (
         <div>
             {editMode
@@ -20,10 +23,10 @@ const ProfileStatus = (props) => {
                     autoFocus={true}
                     onChange={(e) => setStatus(e.currentTarget.value)}
                     onBlur={changeUserStatus}
-                    defaultValue={status} />
+                    defaultValue={props.status} />
                 : <span
                     onDoubleClick={() => setEditMode(!editMode)}>
-                    {props.status}
+                    {props.status || 'No status'}
                 </span>}
         </div>
     )

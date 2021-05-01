@@ -67,6 +67,7 @@ export const updateUserStatus = (status) => {
     return (dispatch) => {
         usersAPI.usersServerData('profile/status/', 'put', { status })
             .then(data => {
+                console.log(data, status);
                 !data.resultCode && dispatch(setCurrentStatus(status));
             })
     }

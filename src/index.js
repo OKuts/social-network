@@ -17,3 +17,4 @@ const rerenderTree = () => {
 rerenderTree();
 
 store.subscribe(() => rerenderTree());
+window.store = store;

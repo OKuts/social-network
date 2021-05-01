@@ -12,7 +12,7 @@ const Profile = (props) => {
     if (!props.profilePage.currentUser) {
         return <Preloader />
     }
-    console.log(props);
+
     return (
         <div>
             {/* <img className={st.img} src={font} alt="" /> */}

@@ -5,7 +5,7 @@ import Nav from './components/Nav/Nav';
 import DialogsCont from './components/Main/Dialogs/DialogsCont';
 import ProfileCont from './components/Main/Profile/ProfileCont';
 import UsersCont from './components/Main/Users/UsersCont';
-import Login from './components/Login/login';
+import Login from './components/Main/Login/login';
 
 
 import './App.css';
